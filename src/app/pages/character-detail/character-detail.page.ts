@@ -11,7 +11,7 @@ import { RickAndMortyService } from '../../services/rick-and-morty.service';
   templateUrl: './character-detail.page.html',
   styleUrls: ['./character-detail.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule, CharacterDetailPage]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule]
 })
 export class CharacterDetailPage implements OnInit {
 
