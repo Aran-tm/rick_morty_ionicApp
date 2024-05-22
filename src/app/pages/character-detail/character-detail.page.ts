@@ -11,11 +11,12 @@ import { RickAndMortyService } from '../../services/rick-and-morty.service';
   templateUrl: './character-detail.page.html',
   styleUrls: ['./character-detail.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule, CharacterDetailPage]
 })
 export class CharacterDetailPage implements OnInit {
 
   characterID: string = "";
+  character = null as any;
 
   constructor(
 
@@ -29,6 +30,25 @@ export class CharacterDetailPage implements OnInit {
 
   ngOnInit() {
     console.log(`HEY`);
+  }
+
+  // ciclo de vida de angular para cuando el usuario entre en la pantalla
+  ionViewWillEnter() {
+    this.getCharacters();
+  }
+
+  getCharacters() {
+
+    this.rickandmorty.getCharacterById(this.characterID).subscribe({
+
+      next: (res: any) => {
+
+        console.log(res);
+        this.character = res;
+      },
+      error: (error: any) => {
+      }
+    });
   }
 
 }
