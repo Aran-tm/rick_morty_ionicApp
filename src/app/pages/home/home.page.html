@@ -8,5 +8,60 @@
 </ion-header>
 
 <ion-content>
-  <div class="glass-content"></div>
+  <div class="glass-content">
+    <ion-grid>
+      <ion-row>
+        @for (character of characters; track character.id) {
+        <ion-col sizeLg="6" sizeMd="6" sizeSm="12" size="12">
+          <ion-card>
+            <ion-grid>
+              <ion-row>
+                <!-- resoluciones grandes, medianas, pequeñas y moviles -->
+                <ion-col
+                  class="ion-padding"
+                  sizeLg="4"
+                  sizeMd="4"
+                  sizeSm="4"
+                  size="12"
+                >
+                  <ion-avatar>
+                    <img [src]="character.image" />
+                  </ion-avatar>
+                </ion-col>
+                <ion-col
+                  class="ion-padding"
+                  sizeLg="8"
+                  sizeMd="8"
+                  sizeSm="8"
+                  size="12"
+                >
+                  <div class="name">{{character.name}}</div>
+                  <p>
+                    Visto por primera vez: <br />
+                    <strong>{{character.origin.name}}</strong>
+                  </p>
+                  <p>
+                    Visto por ultima vez: <br />
+                    <strong>{{character.location.name}}</strong>
+                  </p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+        </ion-col>
+        }
+      </ion-row>
+    </ion-grid>
+
+    <!-- Este es el scroll infinito de IONIC -->
+    <ion-infinite-scroll
+      threshold="25%"
+      position="bottom"
+      (ionInfinite)="getCharacters($event)"
+    >
+      <ion-infinite-scroll-content
+      >
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
 </ion-content>
