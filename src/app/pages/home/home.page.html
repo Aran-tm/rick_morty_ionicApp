@@ -7,12 +7,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content mode="ios">
   <div class="glass-content">
+    <!-- Barra de busqueda -->
+    <ion-row>
+      <ion-col class="d-flex-center" size="12">
+        <ion-searchbar
+          [(ngModel)]="params.name"
+          placeholder="Buscar personaje..."
+          (ionInput)="searchCharacters()"
+          [debounce]="250"
+        ></ion-searchbar>
+      </ion-col>
+    </ion-row>
+
     <ion-grid>
       <ion-row>
         @for (character of characters; track character.id) {
-        <ion-col sizeLg="6" sizeMd="6" sizeSm="12" size="12">
+        <!-- Aqui paso el id del personaje por la ruta-->
+        <ion-col
+          routerLink="/character-detail/{{character.id}}"
+          sizeLg="6"
+          sizeMd="6"
+          sizeSm="12"
+          size="12"
+        >
           <ion-card>
             <ion-grid>
               <ion-row>
@@ -59,9 +78,7 @@
       position="bottom"
       (ionInfinite)="getCharacters($event)"
     >
-      <ion-infinite-scroll-content
-      >
-      </ion-infinite-scroll-content>
+      <ion-infinite-scroll-content> </ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </div>
 </ion-content>

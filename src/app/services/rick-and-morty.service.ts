@@ -11,9 +11,17 @@ export class RickAndMortyService {
     private http: HttpClient
   ) { }
 
+  // obtiene un character
   getCharacter(params: any) {
 
     // obtengo los datos publicos de la API de rick and morty
     return this.http.get(environment.baseURL + environment.character, {params});
+  }
+
+  // obtiene un character por id
+  getCharacterById(id: string) {
+
+    // obtengo los datos publicos de la API de rick and morty
+    return this.http.get(environment.baseURL + environment.character + id);
   }
 }

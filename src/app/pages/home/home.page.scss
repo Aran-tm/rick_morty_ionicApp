@@ -12,3 +12,14 @@ ion-avatar {
   font-size: 1.5em;
   font-weight: bold;
 }
+
+ion-searchbar {
+  --background: rgba(7, 7, 7, 0.4);
+  color: white;
+  max-width: 450px;
+}
+
+ion-card:hover {
+  cursor: pointer;
+  background: rgba(7, 7, 7, 0.485);
+}
