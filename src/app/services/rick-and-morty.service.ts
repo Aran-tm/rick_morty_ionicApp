@@ -24,4 +24,8 @@ export class RickAndMortyService {
     // obtengo los datos publicos de la API de rick and morty
     return this.http.get(environment.baseURL + environment.character + id);
   }
+
+  getByURL(url: string) {
+    return this.http.get(url);
+  }
 }

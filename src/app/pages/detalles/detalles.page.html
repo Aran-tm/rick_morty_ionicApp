@@ -8,7 +8,8 @@
 
 <ion-content mode="ios">
   <div class="glass-content ion-padding">
-    <!-- @if (character) {
+    <!-- MOSTRANDO LOS PERSONAJES -->
+    @if (character) {
     <div class="ion-text-center ion-padding-top">
       <ion-avatar>
         <img [src]="character.image" />
@@ -18,7 +19,18 @@
       <div>Estatus: {{character.status === 'Alive' ? 'Vivo' : 'Muerto'}}</div>
 
       <ion-item lines="none">
-        <ion-icon slot="start" name="location-outline"></ion-icon>
+        <svg
+          class="iconoSVG"
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e8eaed"
+        >
+          <path
+            d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"
+          />
+        </svg>
         <ion-label
           >Visto por primera vez: <br />
           <strong>{{character.origin.name}}</strong></ion-label
@@ -26,13 +38,72 @@
       </ion-item>
 
       <ion-item lines="none">
-        <ion-icon slot="start" name="location-outline"></ion-icon>
+        <svg
+          class="iconoSVG"
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e8eaed"
+        >
+          <path
+            d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"
+          />
+        </svg>
         <ion-label
           >Visto por ultima vez: <br />
           <strong>{{character.location.name}}</strong></ion-label
         >
       </ion-item>
+
+      <ion-item lines="none" class="ion-margin-top">
+        <svg
+          class="iconoSVG"
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e8eaed"
+        >
+          <path
+            d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h480q33 0 56.5 23.5T720-720v180l160-160v440L720-420v180q0 33-23.5 56.5T640-160H160Zm0-80h480v-480H160v480Zm0 0v-480 480Z"
+          />
+        </svg>
+        <ion-label>Episodios donde aparece</ion-label>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e8eaed"
+        >
+          <path
+            d="m480-360 160-160H320l160 160Zm0 280q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+          />
+        </svg>
+      </ion-item>
+
+      <ion-grid>
+        <ion-row>
+          @for (episode of episodes; track episode.id) {
+          <ion-col sizeLg="4" sizeMd="6" sizeSm="6" size="12">
+            <ion-card>
+              <ion-card-content class="ion-text-start">
+                <strong>{{episode.name}}</strong>
+                <p>{{episode.episode}}</p>
+                <p>Fecha de emision: {{episode.air_date}}</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          }
+        </ion-row>
+      </ion-grid>
     </div>
-    } -->
+    } @else {
+    <!-- CARGANDO EL PERSONAJE -->
+    <div class="loader">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+    }
   </div>
 </ion-content>
