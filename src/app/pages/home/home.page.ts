@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonCard, IonAvatar, IonInfiniteScroll, IonInfiniteScrollContent, IonSearchbar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonCard, IonAvatar, IonInfiniteScroll, IonInfiniteScrollContent, IonSearchbar, IonSpinner } from '@ionic/angular/standalone';
 import { RickAndMortyService } from 'src/app/services/rick-and-morty.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonSearchbar, IonInfiniteScrollContent, IonInfiniteScroll, IonAvatar, IonCard, IonCol, IonRow, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule, RouterModule]
+  imports: [IonSpinner, IonSearchbar, IonInfiniteScrollContent, IonInfiniteScroll, IonAvatar, IonCard, IonCol, IonRow, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule, RouterModule]
 })
 export class HomePage implements OnInit {
 
